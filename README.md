@@ -1,27 +1,21 @@
-# React + TypeScript + Vite
+# Chess Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![chess game scholar's mate](./screenshots/scholars_mate.png)
 
-Currently, two official plugins are available:
+## How to Play
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This chess game is implemented using Rust WebAssembly (Wasm) for the logic and React with TypeScript for the frontend. Here are some key features and options you can explore while playing:
 
-## Expanding the ESLint configuration
+- [x] **En Passant**: Explore the en passant rule in chess, allowing a pawn to capture another pawn that has just moved two squares forward.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- [x] **Castling**: Learn how to perform castling, a special move involving the king and a rook that can help improve your position.
 
-- Configure the top-level `parserOptions` property like this:
+- [x] **Illegal Moves**: Watch out for illegal moves! The game ensures that all moves adhere to the rules of chess.
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+- [x] **Check and Checkmate**: Experience the thrill of putting your opponent's king in check and striving for checkmate.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- [x] **Themes**: Customize the game's visual theme to your liking. Try out different themes to enhance your gaming experience.
+- [x] **Highlight Legal Moves**: Legal moves will be highlighted for you, making it easier to plan your strategies and explore your options.
+
+![settings](./screenshots/settings.png)
+Enjoy your chess game adventure, and may you achieve victory on the board!

@@ -6,6 +6,7 @@ import Menu from "./components/Menu";
 import FenEditor from "./components/FenEditor";
 import Footer from "./components/Footer";
 import GameStatus from "./components/GameStatus";
+import SelectBoardTheme from "./components/SelectBoardTheme";
 
 function App() {
   const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode);
@@ -26,6 +27,7 @@ function App() {
         <GameStatus />
         <Board />
         <FenEditor />
+        <SelectBoardTheme />
         <Footer />
       </div>
     </div>

@@ -9,7 +9,7 @@ const FenEditor: FC = () => {
 
   return (
     <div
-      className="flex flex-row"
+      className="flex flex-row m-4"
       style={{ color: isDarkMode ? "white" : "black" }}
     >
       <label className="text-2xl">FEN: </label>

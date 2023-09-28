@@ -3,7 +3,7 @@ import { AppDispatch, RootState } from "../store";
 import { setBoardTheme } from "../store/theme";
 import { boardThemes, BoardThemeType } from "./Theme/boardThemes";
 import { useDispatch, useSelector } from "react-redux";
-import { Tooltip } from "@mui/material";
+import Tooltip from "@mui/material/Tooltip";
 
 const SelectBoardTheme: FC = () => {
   const currBoardTheme = useSelector((state: RootState) => state.theme.board);
@@ -11,7 +11,7 @@ const SelectBoardTheme: FC = () => {
   const changeTheme = (theme: BoardThemeType) => dispatch(setBoardTheme(theme));
 
   return (
-    <div className="grid grid-cols-3 m-4">
+    <div className="flex w-full " style={{ overflowX: "auto" }}>
       {Object.keys(boardThemes).map((key) => {
         const { light, dark } = boardThemes[key as BoardThemeType];
         const buttonClass =
