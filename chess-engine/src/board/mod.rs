@@ -211,13 +211,13 @@ impl Board {
                 _ => {}
             }
         }
-        white_pieces == 0 && black_pieces == 0
-            || white_pieces == 1 && black_pieces == 0 && white_knight
-            || white_pieces == 0 && black_pieces == 1 && black_knight
-            || white_pieces == 1 && black_pieces == 1 && white_knight && black_knight
-            || white_pieces == 1 && black_pieces == 1 && white_bishop && black_bishop
-            || white_pieces == 2 && black_pieces == 1 && white_bishop && white_knight
-            || white_pieces == 1 && black_pieces == 2 && black_bishop && black_knight
+        white_pieces <= 1 && black_pieces <= 1 // only kings on the board
+        || white_pieces == 1 && black_pieces == 0 && (white_bishop || white_knight) // only white king and one minor piece
+        || white_pieces == 0 && black_pieces == 1 && (black_bishop || black_knight) // only black king and one minor piece
+        || white_pieces == 1 && black_pieces == 1 && white_knight && black_knight // only kings and knights
+        || white_pieces == 1 && black_pieces == 1 && white_bishop && black_bishop // only kings and bishops
+        || white_pieces == 2 && black_pieces == 1 && white_bishop // only kings and bishops
+        || white_pieces == 1 && black_pieces == 2 && black_bishop // only kings and bishops
     }
 
     /// This function doesn't check if move is valid, it just moves the piece

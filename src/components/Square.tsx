@@ -4,7 +4,7 @@ import Overlay from "./Overlay";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import { BoardThemeType, boardThemes } from "./Theme";
-import { useChessContext } from "../context/chessContext";
+import { useChessContext } from "../context/useChessContext";
 
 interface DropProps {
   pos: string;

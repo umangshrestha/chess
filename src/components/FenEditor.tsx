@@ -1,11 +1,12 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import { FC } from "react";
-import { useChessContext } from "../context/chessContext";
+import { useChessContext } from "../context/useChessContext";
 
 const FenEditor: FC = () => {
   const { fen, setFen } = useChessContext();
   const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode);
+
   return (
     <div
       className="flex flex-row"

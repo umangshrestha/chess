@@ -1,9 +1,15 @@
 import init, { ChessEngine } from "chess-engine";
 
-await init().catch((err: any) => console.error(err));
+await init().catch((err) => console.error(err));
 const chessEngine = new ChessEngine();
 
-export const getBoard = () => {
+interface Board {
+  piece: string;
+  pos: string;
+  isLightSquare: boolean;
+}
+
+export const getBoard = (): Board[] => {
   return chessEngine
     .getBoard()
     .split("")

@@ -17,6 +17,8 @@ use wasm_bindgen::{prelude::wasm_bindgen, JsValue};
 extern "C" {
     #[wasm_bindgen(js_namespace = console)]
     fn log(s: &str);
+    #[wasm_bindgen(js_namespace = window)]
+    fn alert(s: &str);
 }
 
 #[wasm_bindgen]
@@ -36,6 +38,7 @@ pub struct ChessEngine {
     half_move_clock: u8,
     /// The number of full moves, it starts at 1 and is incremented after black's move.
     full_move_number: u16,
+    game_status: GameStatus,
 }
 
 #[wasm_bindgen]
@@ -57,8 +60,8 @@ impl ChessEngine {
     }
 
     #[wasm_bindgen(js_name = "gameStatus")]
-    pub fn game_status(&mut self) -> JsValue {
-        JsValue::from(format!("{:?}", self.get_status()))
+    pub fn game_status(&mut self) -> String {
+        self.game_status.to_string().clone()
     }
 
     #[wasm_bindgen(js_name = "setBoard")]
@@ -85,15 +88,12 @@ impl ChessEngine {
         let to = algebric_notation::from_string(to).unwrap().into();
         let castling = self.castling.0;
         self.make_move(from, to);
-        if self.board.is_check(!self.is_white_turn) {
-            self.castling.0 = castling;
-            return false;
-        }
         if self.board.is_check(self.is_white_turn) {
             self.castling.0 = castling;
             return false;
         }
         self.is_white_turn = !self.is_white_turn;
+        self.game_status = self.get_status();
         true
     }
 
@@ -163,6 +163,7 @@ impl Default for ChessEngine {
             en_passant: None,
             half_move_clock: 0,
             full_move_number: 1,
+            game_status: GameStatus::InProgress,
         }
     }
 }
@@ -523,12 +524,10 @@ mod tests {
     #[test]
     fn test_cannot_make_king_to_check() {
         let mut chess_position = ChessEngine::new();
-        let arr: Vec<(&str, (&str, &str))> = vec![
-            (
-                "rnb1kbnr/pppp1ppp/8/4p3/4P2q/3P4/PPP2PPP/RNBQKBNR w KQkq - 1 1",
-                ("f1", "f2"),
-            )
-        ];
+        let arr: Vec<(&str, (&str, &str))> = vec![(
+            "rnb1kbnr/pppp1ppp/8/4p3/4P2q/3P4/PPP2PPP/RNBQKBNR w KQkq - 1 1",
+            ("f1", "f2"),
+        )];
         arr.into_iter().for_each(|(fen, (from, to))| {
             chess_position.set_board(fen);
             assert_eq!(

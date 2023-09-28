@@ -3,7 +3,7 @@ import { LabelProps } from "../Label";
 
 import { DraggablePiece } from "../DraggablePiece";
 import Square from "../Square";
-import { useChessContext } from "../../context/chessContext";
+import { useChessContext } from "../../context/useChessContext";
 
 interface BoardProps extends Pick<LabelProps, "flipBoard"> {}
 

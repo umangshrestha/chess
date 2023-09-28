@@ -5,7 +5,7 @@ import { boardThemes, BoardThemeType } from "./Theme/boardThemes";
 import { useDispatch, useSelector } from "react-redux";
 import { Tooltip } from "@mui/material";
 
-const SelectBoardTheme: FC<{}> = () => {
+const SelectBoardTheme: FC = () => {
   const currBoardTheme = useSelector((state: RootState) => state.theme.board);
   const dispatch: AppDispatch = useDispatch();
   const changeTheme = (theme: BoardThemeType) => dispatch(setBoardTheme(theme));

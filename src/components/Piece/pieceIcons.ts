@@ -27,7 +27,7 @@ import {
 import { WhitePieceType } from "./Piece.type";
 
 type ChessIcons = {
-  [key in WhitePieceType]: React.FC<any>;
+  [key in WhitePieceType]: React.FC;
 };
 
 const FaChessIcons: ChessIcons = {

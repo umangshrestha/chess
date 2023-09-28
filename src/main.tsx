@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import store from "./store";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import { ChessProvider } from "./context/chessContext";
+import { ChessProvider } from "./context/chessProvider";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

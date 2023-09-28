@@ -5,6 +5,7 @@ import Board from "./components/Board";
 import Menu from "./components/Menu";
 import FenEditor from "./components/FenEditor";
 import Footer from "./components/Footer";
+import GameStatus from "./components/GameStatus";
 
 function App() {
   const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode);
@@ -22,6 +23,7 @@ function App() {
           <span className="flex-grow" />
           <Menu />
         </Toolbar>
+        <GameStatus />
         <Board />
         <FenEditor />
         <Footer />
